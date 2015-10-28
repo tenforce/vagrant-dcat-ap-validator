@@ -3,7 +3,6 @@
 # Development tools should have been installed.
 curl --silent --location https://rpm.nodesource.com/setup | bash -
 yum -y install nodejs
-npm install request
 
 ###################################################################################
 # Setup the DCAT validator
@@ -14,6 +13,7 @@ pushd /var/local/dcat-ap_validator
  unzip jena-fuseki1-1.1.2-distribution.zip
  cd jena-fuseki1-1.1.2
  unzip -o /vagrant/dcat-ap_validator_v1.1.0.zip
+ npm install request
 popd
 
 ###################################################################################
@@ -27,4 +27,3 @@ pushd /vagrant
  chkconfig --add dcat_service
  service dcat_service start
 popd
-
