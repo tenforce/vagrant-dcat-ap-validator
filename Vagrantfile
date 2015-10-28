@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "private_network", ip: "192.168.0.20", :netmask => "255.255.255.0"
   
   config.vm.provider "virtualbox" do |vb|
-      vb.name = "VagrantLodmsCentOs66"
+      vb.name = "vagrant-dcat-ap-validator"
       vb.gui = true
       vb.customize ["modifyvm", :id, "--memory", 4096]
       vb.customize ["modifyvm", :id, "--vram", 64]
