@@ -1,0 +1,66 @@
+#!/bin/bash
+#
+# dcat_service	Init script for dcat_validator
+#
+# chkconfig 345 100 75
+# description: Starts and Stops DCAT-AP validator.
+#
+# User-specified exit parameters used in this script:
+#
+### BEGIN INIT INFO
+# Provides: dcat_service
+# Required-Start: $syslog $local_fs
+# Required-Stop: $syslog $local_fs
+# Should-Start: portreserve
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: The DCAT-AP validator service
+# Description: The DCAT-AP validator service
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+exec=/var/local/dcat-ap_validator/jena-fuseki1-1.1.2/pages/start_dcat-ap_validator.sh
+prog=start_dcat-ap_validator.sh
+
+check() {
+	# Check that we're a privileged user
+	[ `id -u` = 0 ] || exit 4
+	
+	# Check if commandfile is executable
+	[ -x $exec ] || exit 5
+}
+
+start () {
+	check
+	echo -n $"Starting $prog: "
+	bash "/var/local/dcat-ap_validator/jena-fuseki1-1.1.2/pages/start_dcat-ap_validator.sh" &
+	return 0
+}
+
+stop () {
+	check
+
+	# stop daemon
+	echo -n $"Stopping $prog: nope"
+}
+
+restart() {
+	stop
+	start
+}
+
+case $1 in
+	start)
+		start ;;
+	stop)
+		stop ;;
+	restart)
+		restart ;;
+	*)
+	    echo $"Usage: $prog {start|stop|restart}" 
+	    exit 2
+esac
+
+exit $RETVAL
