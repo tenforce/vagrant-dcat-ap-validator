@@ -3,6 +3,7 @@
 # Development tools should have been installed.
 curl --silent --location https://rpm.nodesource.com/setup | bash -
 yum -y install nodejs
+npm install request
 
 ###################################################################################
 # Setup the DCAT validator
@@ -21,7 +22,7 @@ popd
 pushd /vagrant
  cp dcat_service /etc/init.d
  cp start_dcat-ap_validator.sh /var/local/dcat-ap_validator/jena-fuseki1-1.1.2/pages
- cp dcat-ap.js.config /var/local/dcat-ap_validator/jena-fuseki1-1.1.2/pages/js/concat/dcat.js
+ cp dcat.js.config /var/local/dcat-ap_validator/jena-fuseki1-1.1.2/pages/js/concat/dcat.js
  chmod +x /var/local/dcat-ap_validator/jena-fuseki1-1.1.2/pages/start_dcat-ap_validator.sh
  chkconfig --add dcat_service
  service dcat_service start
