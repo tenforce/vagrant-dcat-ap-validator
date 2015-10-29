@@ -1,0 +1,13 @@
+#+SETUPFILE: ~/SpiderOak/Org/org-html-themes/setup/theme-readtheorg.setup
+#+TITLE: DCAT-AP Validator - Test Deployment Environment
+
+* Introduction
+
+- [[http://localhost:3030/][server homepage]]
+
+- [[http://localhost:3030/dcat-ap_validator.html][DCat-AP Validator Homepage]]
+
+* Details
+
+See elsewhere
+
